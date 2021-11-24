@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageController::class, "home"]);
+Route::get('/showImages', [PageController::class, "showImages"]);
+Route::get('/imageUpload', [PageController::class, "imageUpload"]);
+Route::get('/showImage/{id}', [PageController::class, "showImage"]);
+Route::get('/updateImage/{id}', [PageController::class, "imageUpdate"]);
+
+Route::post('/imageUpload', [ImageController::class, 'uploadImage']);
+Route::post('/updateImage/{id}', [ImageController::class, 'updateImage']);
+Route::post('/deleteImage/{id}', [ImageController::class, 'deleteImage']);
+
