@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Image;
+use App\Models\Tags;
 
 class PageController extends Controller
 {
@@ -11,14 +12,22 @@ class PageController extends Controller
         return view("index");
     }
 
-    public function showImage($id)
-    {
-        return view("image_pages.showImage");
-    }
-
     public function showImages()
     {
-        return view("image_pages.showImages");
+        $images = Image::all();
+
+        return view("imagePage.showImages", ["images" => $images]);
+    }
+
+    public function showImage($id)
+    {
+        $image = Image::where('id', '=', $id)->get();
+        $tags = Tags::where('image_id', '=', $id)->get();
+
+        return view("imagePage.showImage", [
+            "image" => $image,
+            "tags" => $tags
+        ]);
     }
 
     public function imageUpload()
@@ -28,6 +37,12 @@ class PageController extends Controller
 
     public function imageUpdate($id)
     {
-        return view("imagePage.updateImage");
+        $image = Image::where('id', '=', $id)->get();
+        $tags = Tags::where('image_id', '=', $id)->get();
+
+        return view("imagePage.updateImage", [
+            "image" => $image,
+            "tags" => $tags
+        ]);
     }
 }

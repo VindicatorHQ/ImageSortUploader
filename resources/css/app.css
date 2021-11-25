@@ -1,3 +1,43 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.min-h-50 {
+    min-height:50vh
+}
+
+.min-h-55 {
+    min-height:55vh
+}
+
+.min-h-60 {
+    min-height:60vh
+}
+
+.min-h-65 {
+    min-height:65vh
+}
+
+.min-h-70 {
+    min-height:70vh
+}
+
+.min-h-75 {
+    min-height:75vh
+}
+
+.min-h-80 {
+    min-height:80vh
+}
+
+.min-h-85 {
+    min-height:85vh
+}
+
+.min-h-90 {
+    min-height:90vh
+}
+
+.min-h-95 {
+    min-height:95vh
+}
