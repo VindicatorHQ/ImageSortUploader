@@ -66,17 +66,14 @@ class ImageController extends Controller
 
         $tags = preg_split("/[\s,]+/", $tags);
 
-        $tags_builder = Tags::where('image_id', '=', $id);
+        Tags::where('image_id', $id)->delete();
 
-        foreach ($tags_builder as $tag_build)
+        foreach ($tags as $tag)
         {
-            foreach ($tags as $tag)
-            {
-                $tag_builder = Tags::where("id", '=', $tag_build->id)->first();
-                $tag_builder->image_id = $id;
-                $tag_builder->tag_name = $tag;
-                $tag_builder->save();
-            }
+            $tag_builder = new Tags();
+            $tag_builder->image_id = $id;
+            $tag_builder->tag_name = $tag;
+            $tag_builder->save();
         }
 
         return redirect("/showImage/{$id}");

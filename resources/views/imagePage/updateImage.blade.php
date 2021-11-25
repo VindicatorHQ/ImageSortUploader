@@ -4,19 +4,18 @@
         <div class="bg-gradient-to-b from-blue-800 to-blue-600 h-96"></div>
         <div class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
             <div class="bg-gray-900 w-full shadow rounded p-8 sm:p-12 -mt-72">
-                <p class="text-3xl font-bold leading-7 text-center text-white mb-5">Image Upload Page</p>
+                <p class="text-3xl font-bold leading-7 text-center text-white mb-5">Image Update Page</p>
                 <form action="/updateImage/{{ $image[0]['id'] }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="flex items-center justify-center w-full">
                         <img class="w-96, h-96" id="imagePreview" src="{{ asset("storage/images/".$image[0]['image_name']) }}" alt="Your Image"/>
                     </div>
+
                     <div>
                         <div class="w-full flex flex-col mt-8">
                             <label class="font-semibold leading-none text-gray-300">Tags (please seperate them by comma to make it easier to search for the tags)</label>
-                            <textarea type="text" class="h-40 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">
-                                @foreach($tags as $tag)
-                                    {{ $tag['tag_name'] }},
-                                @endforeach
+                            <textarea name="tags" type="text" class="h-40 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">
+                                {{ $tag_names[0] }}
                             </textarea>
                         </div>
                     </div>

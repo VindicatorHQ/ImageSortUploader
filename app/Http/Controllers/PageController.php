@@ -23,10 +23,12 @@ class PageController extends Controller
     {
         $image = Image::where('id', '=', $id)->get();
         $tags = Tags::where('image_id', '=', $id)->get();
+        $counter = $tags->count();
 
         return view("imagePage.showImage", [
             "image" => $image,
-            "tags" => $tags
+            "tags" => $tags,
+            "counter" => $counter
         ]);
     }
 
@@ -39,10 +41,11 @@ class PageController extends Controller
     {
         $image = Image::where('id', '=', $id)->get();
         $tags = Tags::where('image_id', '=', $id)->get();
+        $tag_names = $tags->implode($tags, ", ");
 
         return view("imagePage.updateImage", [
             "image" => $image,
-            "tags" => $tags
+            "tag_names" => $tag_names
         ]);
     }
 }
