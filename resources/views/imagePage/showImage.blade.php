@@ -8,15 +8,14 @@
                 <p class="text-3xl font-bold leading-7 text-center text-white mb-5">{{ $image[0]['image_name'] }}</p>
                     <div class="text-2xl w-full flex flex-col justify-center bg-gray-800 mb-1">
                         <p class="font-bold text-white">
-                            Tags:
-                            @foreach($tags as $tag)
-                                {{ $tag['tag_name'] }},
-                            @endforeach
+                            Tags: {{ $tag_names }}
                         </p>
                     </div>
+
                     <div class="flex items-center justify-center w-full">
                         <img src="{{ asset("storage/images/".$image[0]['image_name']) }}" alt="Your Image"/>
                     </div>
+
                     <div class="flex items-center justify-center w-full mt-9">
                         <a class="mr-10" href="/updateImage/{{ $image[0]['id'] }}">
                             <button class="font-semibold leading-none text-white py-4 px-10 bg-yellow-400 rounded hover:bg-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600 focus:outline-none">

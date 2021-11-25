@@ -14,17 +14,16 @@
                     <div>
                         <div class="w-full flex flex-col mt-8">
                             <label class="font-semibold leading-none text-gray-300">Tags (please seperate them by comma to make it easier to search for the tags)</label>
-                            <textarea name="tags" type="text" class="h-40 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">
-                                {{ $tag_names[0] }}
-                            </textarea>
+                            <textarea name="tags" type="text" class="h-40 text-base leading-none text-gray-50 p-3 focus:outline-none focus:border-blue-700 mt-4 bg-gray-800 border-0 rounded">{{ $tag_names }}</textarea>
                         </div>
                     </div>
-                    <div class="flex items-center justify-center w-full">
-                        <button class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-blue-700 rounded hover:bg-blue-600 focus:ring-2 focus:ring-offset-2 focus:ring-blue-700 focus:outline-none">
+
+                    <div class="flex items-center justify-center w-full mt-9">
+                        <button class="mr-10 font-semibold leading-none text-white py-4 px-10 bg-yellow-400 rounded hover:bg-yellow-500 focus:ring-2 focus:ring-offset-2 focus:ring-yellow-600 focus:outline-none">
                             Update Image Tags
                         </button>
                         <a href="/deleteImage/{{ $image[0]['id'] }}">
-                            <button class="mt-9 font-semibold leading-none text-white py-4 px-10 bg-red-700 rounded hover:bg-red-600 focus:ring-2 focus:ring-offset-2 focus:ring-red-700 focus:outline-none">
+                            <button class="font-semibold leading-none text-white py-4 px-10 bg-red-700 rounded hover:bg-red-600 focus:ring-2 focus:ring-offset-2 focus:ring-red-700 focus:outline-none">
                                 Delete Image
                             </button>
                         </a>

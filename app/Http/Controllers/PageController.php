@@ -12,6 +12,11 @@ class PageController extends Controller
         return view("index");
     }
 
+    public function searchImages()
+    {
+        return view("imagePage.searchImages");
+    }
+
     public function showImages()
     {
         $images = Image::all();
@@ -23,12 +28,11 @@ class PageController extends Controller
     {
         $image = Image::where('id', '=', $id)->get();
         $tags = Tags::where('image_id', '=', $id)->get();
-        $counter = $tags->count();
+        $tag_names = $tags->implode('tag_name', ", ");
 
         return view("imagePage.showImage", [
             "image" => $image,
-            "tags" => $tags,
-            "counter" => $counter
+            "tag_names" => $tag_names
         ]);
     }
 
@@ -41,7 +45,7 @@ class PageController extends Controller
     {
         $image = Image::where('id', '=', $id)->get();
         $tags = Tags::where('image_id', '=', $id)->get();
-        $tag_names = $tags->implode($tags, ", ");
+        $tag_names = $tags->implode('tag_name', ", ");
 
         return view("imagePage.updateImage", [
             "image" => $image,

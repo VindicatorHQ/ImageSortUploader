@@ -16,7 +16,7 @@ class ImageController extends Controller
         {
             $this->validate($request, [
                 'tags' => ['required', 'string'],
-                'image' => ['required', 'image', 'mimes:jpeg, png, jpg, gif, svg, webp'],
+                'image' => ['required', 'image', 'mimes:jpeg, png, jpg, gif, svg, webp, gif'],
             ]);
         }
         catch (ValidationException $e) {
@@ -79,8 +79,13 @@ class ImageController extends Controller
         return redirect("/showImage/{$id}");
     }
 
-    public function deleteImage(Request $request, $id)
+    public function deleteImage($id)
     {
-        return view("image_pages.show");
+        $image_file = Image::find($id);
+
+        Storage::disk('public')->delete("images/$image_file[image_name]");
+        Image::where('id', $id)->delete();
+
+        return redirect('/showImages');
     }
 }
