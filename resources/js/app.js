@@ -5,7 +5,6 @@
  */
 
 import { createApp } from 'vue';
-// import Navigation from './components/Navigation.vue';
 require('./bootstrap');
 
 /**
@@ -28,5 +27,6 @@ const VueApp = createApp({
     }
 });
 
-VueApp.component('navigation', require('./components/Navigation.vue').default);
+VueApp.component('Navigation', require('./components/Navigation.vue').default);
+VueApp.component("Home", require('./components/Home.vue').default);
 VueApp.mount('#app');

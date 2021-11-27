@@ -46,7 +46,7 @@ const navigation = [
 ]
 
 export default {
-    name: 'navigation',
+    name: 'Navigation',
 
     components: {
         Disclosure,
