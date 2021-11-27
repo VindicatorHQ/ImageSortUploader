@@ -12,9 +12,9 @@
     <body class="bg-gray-800">
         <div id="app">
             <navigation></navigation>
-        </div>
 
-        @yield('content')
+            @yield('content')
+        </div>
     </body>
 
     <script src="{{ asset('js/app.js') }}"></script>
