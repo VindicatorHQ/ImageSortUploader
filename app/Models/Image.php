@@ -16,8 +16,8 @@ class Image extends Model
         'image_name'
     ];
 
-    public function tags()
-    {
-        return $this->hasMany(Tags::class);
-    }
+//    public function tags()
+//    {
+//        return $this->hasMany(Tags::class);
+//    }
 }

@@ -19,21 +19,14 @@ class PageController extends Controller
 
     public function showImages()
     {
-        $images = Image::all();
-
-        return view("imagePage.showImages", ["images" => $images]);
+        return view("imagePage.showImages");
     }
 
     public function showImage($id)
     {
-        $image = Image::where('id', '=', $id)->get();
-        $tags = Tags::where('image_id', '=', $id)->get();
-        $tag_names = $tags->implode('tag_name', ", ");
+        $imageRoute = route("getImageByIdApi", ['id' => $id]);
 
-        return view("imagePage.showImage", [
-            "image" => $image,
-            "tag_names" => $tag_names
-        ]);
+        return view("imagePage.showImage", ['image_id' => $imageRoute]);
     }
 
     public function imageUpload()

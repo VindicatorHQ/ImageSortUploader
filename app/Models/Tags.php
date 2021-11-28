@@ -16,4 +16,9 @@ class Tags extends Model
         'image_id',
         'tag_name'
     ];
+
+//    public function image()
+//    {
+//        $this->hasMany(Image::class);
+//    }
 }

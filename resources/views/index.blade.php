@@ -1,4 +1,4 @@
 @extends('template.app')
 @section('content')
-    <Home></Home>
+    <home></home>
 @endsection

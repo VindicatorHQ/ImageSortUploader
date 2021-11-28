@@ -1,6 +1,6 @@
 @extends('template.app')
 @section('content')
-    <div class="w-full bg-gray-800 h-screen">
+    <div class="w-full bg-gray-800 min-h-93">
         <div class="bg-gradient-to-b from-blue-800 to-blue-600 h-96"></div>
         <div class="max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 mb-12">
             <div class="bg-gray-900 w-full shadow rounded p-8 sm:p-12 -mt-72">
