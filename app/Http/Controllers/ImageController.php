@@ -6,6 +6,7 @@ use App\Models\Image;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class ImageController extends Controller
@@ -25,10 +26,9 @@ class ImageController extends Controller
 
         $imageContent = $request->file('image');
 
-        $filenameWithExt = $request->file('image')->getClientOriginalName();
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $filename = Str::random(12);
         $extension = $request->file('image')->getClientOriginalExtension();
-        $imageName = $filename.'_'.time().'.'.$extension;
+        $imageName = $filename.'.'.$extension;
 
         Storage::disk('public')->put("images/$imageName", file_get_contents($imageContent));
 
@@ -47,7 +47,9 @@ class ImageController extends Controller
             $tag_builder->save();
         }
 
-        return redirect("/showImage/{$image->id}");
+        return response([
+            'redirect_url' => "/showImage/{$image->id}"
+        ]);
     }
 
     public function updateImage(Request $request, $id)
@@ -76,7 +78,9 @@ class ImageController extends Controller
             $tag_builder->save();
         }
 
-        return redirect("/showImage/{$id}");
+        return response([
+            'redirect_url' => "/showImage/{$id}"
+        ]);
     }
 
     public function deleteImage($id)
@@ -86,6 +90,8 @@ class ImageController extends Controller
         Storage::disk('public')->delete("images/$image_file[image_name]");
         Image::where('id', $id)->delete();
 
-        return redirect('/showImages');
+        return response([
+            'redirect_url' => "/showImages"
+        ]);
     }
 }

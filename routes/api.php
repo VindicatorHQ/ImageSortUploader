@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\APIController;
+use App\Http\Controllers\ImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/getImages', [APIController::class, "getImagesApi"])->name('getImagesApi');
 Route::get('/getImageById', [APIController::class, "getImageByIdApi"])->name('getImageByIdApi');
+
+Route::post('/uploadImage', [ImageController::class, "uploadImage"])->name('uploadImageApi');
+Route::post('/updateImage/{id}', [ImageController::class, "updateImage"])->name('updateImageApi');
+Route::delete('/deleteImage/{id}', [ImageController::class, "deleteImage"])->name('deleteImageApi');

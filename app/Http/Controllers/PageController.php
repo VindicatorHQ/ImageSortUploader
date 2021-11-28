@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
-use App\Models\Tags;
 
 class PageController extends Controller
 {
@@ -36,13 +34,8 @@ class PageController extends Controller
 
     public function imageUpdate($id)
     {
-        $image = Image::where('id', '=', $id)->get();
-        $tags = Tags::where('image_id', '=', $id)->get();
-        $tag_names = $tags->implode('tag_name', ", ");
+        $imageRoute = route("getImageByIdApi", ['id' => $id]);
 
-        return view("imagePage.updateImage", [
-            "image" => $image,
-            "tag_names" => $tag_names
-        ]);
+        return view("imagePage.updateImage", ['image_id' => $imageRoute]);
     }
 }

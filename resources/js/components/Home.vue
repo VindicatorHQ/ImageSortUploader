@@ -83,9 +83,5 @@
 <script>
 export default {
     name: "Home",
-
-    mounted() {
-        console.log('Home mounted')
-    },
 }
 </script>

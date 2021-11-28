@@ -29,6 +29,8 @@ const VueApp = createApp({
  * Eg. ./components/DesktopNav.vue -> <example-component></example-component>
  */
 
+VueApp.component("UpdateImageTags", require('./components/UpdateImageTags.vue').default);
+VueApp.component("UploadImage", require('./components/UploadImage.vue').default);
 VueApp.component('Navigation', require('./components/Navigation.vue').default);
 VueApp.component("ShowImages", require('./components/ShowImages.vue').default);
 VueApp.component("ShowImage", require('./components/ShowImage.vue').default);

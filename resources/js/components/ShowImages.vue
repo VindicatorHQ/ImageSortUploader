@@ -50,9 +50,6 @@ export default {
     },
     created() {
         this.getImages();
-    },
-    mounted() {
-        console.log('ShowImages mounted')
     }
 }
 </script>
